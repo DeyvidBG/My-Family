@@ -1,0 +1,261 @@
+@mixin flexCenter($justifyContent) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #f7f7f7; 
+    border-radius: 10px;
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #6c63ff; 
+    border-radius: 10px;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #4641ff; 
+}
+
+$backgroundColor: #f7f7f7;
+$blackText: #111;
+$buttonColor: #06d19c;
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn {
+    padding: 8px 26px 8px 26px;
+    text-transform: uppercase;
+    background: none;
+    border: 0px solid;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.app {
+    display: grid;
+    grid-template-columns: 0.7fr 9.5fr;
+    grid-template-rows: 1fr 7fr;
+    grid-template-areas: 
+        "logo    settings"
+        "sideBar gallery"
+    ;
+    height: 100vh;
+}
+
+.gallery {
+    grid-area: gallery;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    border-top-right-radius: 15px;
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    flex-wrap: wrap;
+}
+
+.gallery .empty{
+    width: 50%;
+    height: 50%;
+}
+
+.gallery .addImage {
+    margin: 15px 0px;
+    background-color: #6C63FF;
+    color: white;
+    border-radius: 30px;
+}
+
+.logo {
+    grid-area: logo;
+    background-color: #f7f7f7;
+    @include flexCenter(center);
+    color: black;
+}
+
+.settings {
+    grid-area: settings;
+    background-color: #f7f7f7;
+    @include flexCenter(center);
+}
+
+.settings .settingsBar {
+    width: 80%;
+    @include flexCenter(space-between);
+}
+
+.settings .settingsBar .search input {
+    margin: 0 !important;
+}
+
+.settings .settingsBar .buttonSection .addImage {
+    color: black;
+}
+
+.sideBar {
+    grid-area: sideBar;
+    @include flexCenter(space-between);
+    flex-direction: column;
+    padding: 15px 5px 15px 5px;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+}
+
+.mainButtons {
+    @include flexCenter(center);
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.mainButtons button {
+    color: black;
+}
+
+.secondaryButtons {
+    @include flexCenter(center);
+    flex-direction: column;
+}
+
+.secondaryButtons button {
+    color: black;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 11;
+    background-color: white;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px; 
+}
+
+.modal form {
+    @include flexCenter(center);
+    flex-direction: column;
+    width: 100%;
+}
+
+.modal h1 {
+    text-transform: uppercase;
+}
+
+.modal p {
+    text-align: center;
+}
+
+.blackShadow {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+}
+
+.createIt {
+    background-color: $buttonColor;
+    border-radius: 30px;
+    color: white;
+    font-weight: 400;
+}
+
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], input[type="date"], input[type="file"], select, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #eee;
+    width: 80%;
+    // -webkit-transition: .7s;
+    // transition: .7s;
+    color: #111;
+    font-family: Lato, sans-serif;
+    font-weight: 400;
+    padding: 10pt 20pt;
+    border-radius: 30px;
+    background-color: #f7f7f7;
+    margin-bottom: 1.4em;
+    display: block;
+    box-sizing: content-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 200px;
+    max-height: 300px;
+}
+
+select {
+    width: 80%;
+}
+
+input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="file"]:focus, select:focus, textarea:focus {
+    border-color: rgba(108, 99, 255, 0.5);
+    outline: 0;
+    background-color: #ffffff; 
+}
+
+.photo {
+    @include flexCenter(center);
+    flex-direction: column;
+    max-height: 250px;
+    margin: 10px 30px;
+    position: relative;
+}
+
+.photo img {
+    box-shadow: 0 0 10px #000;
+    height: 250px;
+    width: 250px;
+}
+
+.photo i {
+    color: #6C63FF;
+}
+
+.delete {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(245,0,87,0.7);
+    opacity: 0;
+    transition: .3s;
+    @include flexCenter(center);
+    cursor: pointer;
+}
+
+.photo:hover .delete {
+    opacity: 1;
+}
+
+.emptyGallery {
+    @include flexCenter(center);
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}

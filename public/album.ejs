@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/js/album.js"></script>
+    <link rel="stylesheet" href="/css/album.css">
+    <script src="https://kit.fontawesome.com/0a74bda537.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="blackShadow"></div>
+    <div class="modal addNewImage">
+        <h1>Създаване на нов албум</h1>
+        <form action="/gallery/upload" enctype="multipart/form-data" method="POST">
+            <input type="file" name="myFile">
+            <button class="btn createIt" type="submit">Добави</button>
+        </form>
+        <button class="btn close">затвори прозореца</button>
+    </div>
+    <div class="app">
+        <div class="logo">
+            <h1>MF</h1>
+        </div>
+        <div class="settings">
+            <div class="settingsBar">
+                <div class="search">
+                    <input type="text" id="search" placeholder="Търси снимка по име...">
+                </div>
+                <div class="buttonSection">
+                    <button class="btn addImage" title="Добави нова снимка."><i class="fas fa-file-upload fa-2x"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="sideBar">
+            <div class="mainButtons">
+                <button class="btn"><i class="fas fa-calendar-alt fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-car fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-user-graduate fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-location-arrow fa-2x"></i></button>
+            </div>
+            <div class="secondaryButtons">
+                <button class="btn"><i class="fas fa-cog fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-sign-out-alt fa-2x"></i></button>
+            </div>
+        </div>
+        <div class="gallery">
+            <% if(photos.length === 0) { %>
+            <div class="emptyGallery">
+                <img src="/assets/gallery.svg" class="empty" alt="empty gallery" draggable="false">
+                <button class="btn addImage">Качете първата си снимка</button>
+            </div>
+            <% } else { 
+                photos.forEach((photo) => {
+            %>
+            <div class="photo" data-photo="<%= photo.photo_id %>">
+                <div class="delete"><i style="color: white;" class="fas fa-trash fa-3x"></i></div>
+                <img src="/upload/<%= photo.photo_link %>" alt="picture">    
+                <%= photo.title %>
+            </div>
+            <% })} %>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/chat.css">
+    <script src="https://kit.fontawesome.com/0a74bda537.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="./js/scripts/dateObjects.js"></script>
+</head>
+<body>
+    <div class="me">
+        <div class="profileSide">
+            <img src="./assets/profile.svg" alt="profile picture" class="profilePicture">
+            <h4><%= user %></h4>
+        </div>
+        <button class="btn subscribeForEmailNotifications">известия</button>
+    </div>
+    <div class="chatHeader">
+        <div class="header">
+            <h3 id="chatName"><%= chatInfo[0].familyName %></h3>
+            <h3><em id="membersCount">Участници: <%= chatInfo[0].members %></em></h3>
+        </div>
+    </div>
+    <div class="membersOfChat">
+        <%  members.forEach((member) => { %>
+            <div class="member">
+                <img src="./assets/profile.svg" alt="profile picture" class="profilePicture" draggable="false">
+                <h4><%= member.Name %></h4>
+            </div>
+        <%  }) %>
+    </div>
+    <div class="chatBox">
+        <div class="placeForMessages">
+            <% messages.forEach((message) => { 
+                var minutes = message.minute < 10 ? '0' + message.minute : message.minute    
+            %>
+                <div class="messageBox">
+                    <img src="./assets/profile.svg" alt="profile picture" class="profilePicture" draggable="false">
+                    <div class="message"><%= message.username %> написа на <%= message.date %> в <%= message.hour %>:<%= minutes %> :<br><%= message.message %></div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    <div class="chatLeave">
+        <a href="/dashboard"><button class="btn leave">Излез от чата</button></a>
+    </div>
+    <div class="chatInput">
+        <div class="inputField">
+            <form method="POST" id="sendMessage">
+                <textarea name="message" id="message" rows="3"  placeholder="Въведете Вашето съобщение..."></textarea>
+                <button type="submit" class="btn sendMessage">Изпрати</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

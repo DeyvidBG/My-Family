@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <script src="./js/auth.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="auth">
+        <div class="authImage">
+            <img src="assets/family.svg" alt="Selfie" draggable="false">
+        </div>
+        <div class="authBox">
+            <h1>Влез сега</h1>
+            <p>Попълни имейл и парола</p>
+            <form method="POST">
+                <label for="email">Имейл</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                <label for="password">Парола</label>
+                <input id="password" type="password" placeholder="**********">
+                <button type="submit" class="btn logIn">Влез</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

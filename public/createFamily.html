@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/createFamily.css">
+    <script src="./js/createFamily.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <h1 class="intro">Изберете една от следните опции</h1>
+        <div class="columns">
+            <div class="createFamily">
+                <h3>Добавете ново семейство към нашето общество</h3>
+                <p>Добавяйки семейство, Вие ще получите достъп до всички функционалности на нашата апликация.</p>
+                <form method="POST">
+                    <label for="password">Прякор на семейството</label>
+                    <input id="familyName" type="text" placeholder="ГоцановиСаВърха">
+                    <button type="submit" class="btn create" id="create">Създай</button>
+                </form>
+            </div>
+            <div class="or">
+                <div class="or-word">Или</div>
+            </div>
+            <div class="alreadyMember">
+                <h3>Въведете 6-цифрения код, който сте получили от друг член на семейството.</h3>
+                <div class="inputNumber">
+                    <div class="digits">
+                        <input type="text" pattern="\d*" class="digit" maxlength="1" placeholder="X">
+                    </div>
+                    <div class="digits">
+                        <input type="text" pattern="\d*" class="digit" maxlength="1" placeholder="X">
+                    </div>
+                    <div class="digits">
+                        <input type="text" pattern="\d*" class="digit" maxlength="1" placeholder="X">
+                    </div>
+                    <div class="digits">
+                        <input type="text" pattern="\d*" class="digit" maxlength="1" placeholder="X">
+                    </div>
+                    <div class="digits">
+                        <input type="text" pattern="\d*" class="digit" maxlength="1" placeholder="X">
+                    </div>
+                    <div class="digits">
+                        <input type="text" pattern="\d*" class="digit" maxlength="1" placeholder="X">
+                    </div>
+                </div>
+                <button type="submit" class="btn getIn">Влез</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -75,7 +75,7 @@ var chat = require('./routes/chat')
 var map = require('./routes/map')
 var gallery = require('./routes/gallery')
 
-const PORT = process.env.PORT || 3000
+const PORT = 8080
 
 // for parsing application/json
 app.use(bodyParser.json())

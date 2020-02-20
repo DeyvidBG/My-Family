@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/dashboard.js"></script>
+    <script src="./js/scripts/validation.js"></script>
+    <script src="https://kit.fontawesome.com/0a74bda537.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="blackShadow"></div>
+    <div class="modal addTask">
+        <h1>нова задача</h1>
+        <form method="POST" id="task">
+            <input type="text" placeholder="Заглавие" id="title" required>
+            <textarea placeholder="Описание(максимум 250 символа)" id="description" required></textarea>
+            <input type="date" id="date" required>
+            <select id="type" required>
+                <option value="1">еднократно</option>
+                <option value="2">ежедневно</option>
+                <option value="3">в работни дни</option>
+                <option value="4">седмично</option>
+                <option value="5">месечно</option>
+                <option value="6">годишно</option>
+            </select>
+            <button class="btn newTask" type="submit">Добави</button>
+        </form>
+        <button class="btn close">затвори прозореца</button>
+    </div>
+    <div class="modal addMemberModal">
+        <h1>нов член</h1>
+        <p>Попълнете имейла, на желания от Вас член, и ние ще му изпратим имейл.</p>
+        <form method="POST" id="member">
+            <input type="email" placeholder="Въведете имейл..." id="email" required>
+            <button class="btn member" type="submit" id="addMember">Покани</button>
+        </form>
+        <button class="btn close">затвори прозореца</button>
+    </div>
+    <div class="modal deleteTaskModal">
+        <h1>Изтриване на задача</h1>
+        <p>Веднъж изтрита задачата, тя не може да бъде възстановена.</p>
+        <button class="btn deleteEvent">Изтрий</button>
+        <button class="btn close">затвори прозореца</button>
+    </div>
+    <div class="modal repeatTask">
+        <h1>Повтаряне на задачата</h1>
+        <p>Този прозорец беше отворен, поради факта, че сте задали, че това събитие да не е еднократно. Ще Ви бъди предложена нова дата за това събитие, ако не искате да го повтаряте, имате възможността да го изтриете. Датата е предположена спрямо това вида на задачата, тя може да бъде променена.</p>
+        <form method="POST" id="repeat">
+            <input type="date" id="repeatDate" required>
+            <button class="btn member" type="submit" id="repeatTask">Задай</button>
+        </form>
+        <button class="btn deleteEvent">Изтрий</button>
+        <button class="btn close">затвори прозореца</button>
+    </div>
+    <div class="grid-area">
+        <div class="logo">
+            <h1>MF</h1>
+        </div>
+        <div class="header">
+            <h1 class="title">Всички задачи</h1>
+            <button class="btn newTask" id="newTask">нова задача</button>
+        </div>
+        <div class="rememberBox">
+            <button class="remember">
+                <i class="fas fa-bell"></i>
+            </button>
+        </div>
+        <div class="sideBar">
+            <div class="mainButtons">
+                <button class="btn"><i class="fas fa-calendar-alt fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-car fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-user-graduate fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-location-arrow fa-2x"></i></button>
+            </div>
+            <div class="secondaryButtons">
+                <button class="btn"><i class="fas fa-cog fa-2x"></i></button>
+                <button class="btn" id="signOut"><i class="fas fa-sign-out-alt fa-2x"></i></button>
+            </div>
+        </div>
+        <div class="mainWrapper">
+        </div>
+        <div class="profileSide">
+            <div class="profile">
+                <h4>Здравейте, <br><b><span id="name"><%= user %></span></b></h4>
+                <img src="assets/profile.svg" width="50" height="50">
+            </div>
+            <div class="tasks">
+                <div class="task">
+                    <h4>Общо брой задачи:</h4>
+                    <span class="stats" id="allInOne">0</span>
+                </div>
+                <div class="task">
+                    <h4>Изпълнени:</h4>
+                    <span class="stats" id="completed">0</span>
+                </div>
+                <div class="task">
+                    <h4>В прогрес:</h4>
+                    <span class="stats" id="inProgress">0</span>
+                </div>
+                <div class="task">
+                    <h4>Извън графика:</h4>
+                    <span class="stats" id="offShedule">0</span>
+                </div>
+            </div>
+            <div class="members">
+                <h4>Членове на семейството</h4>
+                <ul>
+                    
+                </ul>
+                <button class="btn member newMember">
+                    Добави член
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

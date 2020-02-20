@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/gallery.js"></script>
+    <link rel="stylesheet" href="./css/gallery.css">
+    <script src="https://kit.fontawesome.com/0a74bda537.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="blackShadow"></div>
+    <div class="modal createNewAlbum">
+        <h1>Създаване на нов албум</h1>
+        <form method="POST" id="newAlbum">
+            <input type="text" placeholder="Заглавие" id="title" required>
+            <textarea placeholder="Описание(максимум 250 символа)" id="description" required></textarea>
+
+            <button class="btn createIt" type="submit">Добави</button>
+        </form>
+        <button class="btn close">затвори прозореца</button>
+    </div>
+    <div class="app">
+        <div class="logo">
+            <h1>MF</h1>
+        </div>
+        <div class="settings">
+            <div class="settingsBar">
+                <div class="search">
+                    <input type="text" id="search" placeholder="Търси албум по име...">
+                </div>
+                <div class="buttonSection">
+                    <button class="btn addAlbum" title="Добави нов албум."><i class="fas fa-compact-disc fa-2x"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="sideBar">
+            <div class="mainButtons">
+                <button class="btn"><i class="fas fa-calendar-alt fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-car fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-user-graduate fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-location-arrow fa-2x"></i></button>
+            </div>
+            <div class="secondaryButtons">
+                <button class="btn"><i class="fas fa-cog fa-2x"></i></button>
+                <button class="btn"><i class="fas fa-sign-out-alt fa-2x"></i></button>
+            </div>
+        </div>
+        <div class="gallery">
+            <% if(albums.length === 0) { %>
+            <div class="emptyGallery">
+                <img src="./assets/gallery.svg" class="empty" alt="empty gallery" draggable="false">
+                <button class="btn addAlbum">Създайте първия си албум сега</button>
+            </div>
+            <% } else { 
+                albums.forEach((album) => {
+            %>
+            <a href="/gallery/<%= album.album_id%>">
+                <div class="album">
+                    <i class="fas fa-folder fa-5x"></i>    
+                    <p><%= album.title %></p>
+                </div>
+            </a>
+            <% })} %>
+        </div>
+    </div>
+</body>
+</html>

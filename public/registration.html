@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/registration.css">
+    <script src="js/registration.js"></script>
+    <script src="js/scripts/validation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="reg">
+        <div class="regBox">
+            <form method="POST" action="/">
+                <label for="firstName">Име</label>
+                <input id="firstName" name="firstName" type="text" placeholder="пр. Джони" required>
+                <label for="phone">Телефонен номер</label>
+                <input id="phone" name="phone" type="text" placeholder="00359000000000" required>
+                <label for="email">Имейл</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                <label for="bday">Рожденна дата</label>
+                <input id="bday" name="bday" type="date" placeholder="21/21/2021" required>
+                <label for="password">Парола</label>
+                <input id="password" name="password" type="password" placeholder="**********" data-info="Hey whatsup?">
+                <button type="submit" class="btn regBtn">Влез</button>
+            </form>
+            <div class="errorMessage"></div>
+        </div>
+        <div class="regImage">
+            <img src="assets/getIn.svg" alt="Selfie" draggable="false">
+        </div>
+    </div>
+</body>
+</html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" href="./assets/logo.png">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -18,11 +19,32 @@
 </head>
 <body>
     <div class="blackShadow"></div>
+    <div class="modal info">
+        <h1>Инструкции</h1>
+        <p>Вие влязохте в секция "Живо следене". Ако нямате идея как този модул се използва, можете
+             да прочете упътванията. Тук Вие може да добавите обекти като вкъщи, училище, фитнес и др.
+              Това се случва, като Вие натиснете върху картата. На нея ще се появи маркер, който трябва 
+              да привлачите върху, желаната от Вас, локация, по този начин нейните кординати ще се запомнят.
+               За да добавите локацията и допълнителна информация за нея, Вие трябва да натиснете върху "+" в
+                страничното меню. След като добавите обекта, старите кординати ще бъдат премахнати от формата
+                 за попълване и процесът трябва да бъде повторен отново. Ако решите, че не искате да добавяте
+                  нова локация натиснете клавиша "d", по този начин маркерът ще бъде премахнат.</p>
+        <button class="btn close">затвори прозореца</button>
+    </div>
     <div class="modal newObject">
         <h1>нов обект</h1>
-        <form method="POST" id="task">
+        <form method="POST" id="newObject">
             <input type="text" placeholder="Име на обекта" id="title" required>
             <textarea placeholder="Описание(максимум 250 символа)" id="description" required></textarea>
+            <input type="text" id="lat" disabled>
+            <input type="text" id="lng" disabled>
+            <select id="color">
+                <option value="" disabled selected>Изберете цвят за Вашата точка.</option>
+                <option value="1">Червено</option>
+                <option value="2">Жълто</option>
+                <option value="3">Синьо</option>
+                <option value="4">Зелено</option>
+            </select>
             <button class="btn addNewObject" type="submit">Добави</button>
         </form>
         <button class="btn close">затвори прозореца</button>
@@ -34,21 +56,22 @@
         <div class="header">
             <div class="locationHeader">
                 <h3 class="familyName">Гоцанови</h3>
-                <h3>Обекти: <%= mainInfo[0].familyName %></h3>
+                <h3>Обекти: <span id="objectsCount"><%= count.count %></span></h3>
                 <h3>Участници: <%= mainInfo[0].members %></h3>
             </div>
         </div>
         <div class="sideBar">
             <div class="mainButtons">
-                <button class="btn"><i class="fas fa-calendar-alt fa-2x"></i></button>
-                <button class="btn"><i class="fas fa-car fa-2x"></i></button>
-                <button class="btn"><i class="fas fa-user-graduate fa-2x"></i></button>
-                <button class="btn"><i class="fas fa-location-arrow fa-2x"></i></button>
+                <a href="/dashboard"><button class="btn"><i class="fas fa-calendar-alt fa-2x"></i></button></a>
+                <a href="/garage"><button class="btn"><i class="fas fa-car fa-2x"></i></button></a>
+                <a href="/student"><button class="btn"><i class="fas fa-user-graduate fa-2x"></i></button></a>
+                <a href="/map"><button class="btn"><i class="fas fa-location-arrow fa-2x"></i></button></a>
                 <button class="btn addObject"><i class="fas fa-plus fa-2x"></i></button>
+                <button class="btn openHelp"><i class="fas fa-info fa-2x"></i></button>
             </div>
             <div class="secondaryButtons">
-                <button class="btn"><i class="fas fa-cog fa-2x"></i></button>
-                <button class="btn"><i class="fas fa-sign-out-alt fa-2x"></i></button>
+                <a href="/account"><button class="btn"><i class="fas fa-cog fa-2x"></i></button></a>
+                <a href="/logout"><button class="btn"><i class="fas fa-sign-out-alt fa-2x"></i></button></a>
             </div>
         </div>
         <div id='map'></div>

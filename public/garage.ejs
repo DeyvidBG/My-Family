@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="./assets/logo.png">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/garage.js"></script>
+    <link rel="stylesheet" href="./css/garage.css">
+    <script src="https://kit.fontawesome.com/0a74bda537.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <% if(gtp.length > 0) {
+        gtp.forEach(el => { %>
+            <div class="blackShadow" style="display: block"></div>
+            <div class="modal setNewGtp" style="display: flex;" data-id="<%= el.id %>">
+                <h1>нов гтп</h1>
+                <p>Днес е денят за годишен технически преглед и Вие получавате възможност да зададете следващата дата за този преглед. Предлага Ви се дата, която е точно след една година.</p>
+                <form method="POST" id="newGtp">
+                    <label for="gtp">Следващ годишен технически преглед</label>
+                    <input type="date" id="nGtp" required>
+                    <button class="btn setNewGtpBtn" type="submit">Добави</button>
+                </form>
+            </div>
+    <%
+        })
+    } else { %>
+    <div class="blackShadow"></div>
+    <% } %>
+
+    <div class="blackShadow"></div>
+    <div class="modal newCar">
+        <h1>ново мпс</h1>
+        <form method="POST" id="newCar">
+            <input type="text" placeholder="Наименование" id="name" required>
+            <textarea placeholder="Описание(максимум 250 символа)" id="description" required></textarea>
+            <label for="gtp">Следващ годишен технически преглед</label>
+            <input type="date" id="gtp" required>
+            <label for="kons">Смяна на консумативи</label>
+            <input type="date" id="kons" required>
+            <button class="btn addNewCarBtn" type="submit">Добави</button>
+        </form>
+        <button class="btn close">затвори прозореца</button>
+    </div>
+    <div class="app">
+        <div class="logo">
+            <h1>MF</h1>
+        </div>
+        <div class="header">
+            <div class="locationHeader">
+                <h3>Гоцанови</h3>
+                <h3>МПС-та: <span id="carsCount"><%= count %></span></h3>
+                <button class="btn addNewCar">Добави Мпс</button>
+            </div>
+        </div>
+        <div class="sideBar">
+            <div class="mainButtons">
+                <a href="/dashboard"><button class="btn"><i class="fas fa-calendar-alt fa-2x"></i></button></a>
+                <a href="/garage"><button class="btn"><i class="fas fa-car fa-2x"></i></button></a>
+                <a href="/student"><button class="btn"><i class="fas fa-user-graduate fa-2x"></i></button></a>
+                <a href="/map"><button class="btn"><i class="fas fa-location-arrow fa-2x"></i></button></a>
+            </div>
+            <div class="secondaryButtons">
+                <a href="/account"><button class="btn"><i class="fas fa-cog fa-2x"></i></button></a>
+                <a href="/logout"><button class="btn"><i class="fas fa-sign-out-alt fa-2x"></i></button></a>
+            </div>
+        </div>
+        <div id='garage'>
+            <% if(autos.length > 0) { 
+                    autos.forEach(auto => { %>
+                        <div class="car" data-id="<%= auto.id %>">
+                            <p class="carName"><b>Наименование/модел: </b><%= auto.name %></p>
+                            <p class="description"><b>Описание: </b><%= auto.description %></p>
+                            <p><b>Следващ годишен технически преглед: </b><span id="gtpText"><%= auto.gtp %></span></p>
+                            <p><b>Смяна на консумативи: </b><span id="serviceText"><%= auto.service %></span></p>
+                            <div class="options">
+                                <button class="btn deleteCar">Премахни</button>
+                            </div>
+                        </div>
+            <% })} %>    
+        </div>
+    </div>
+</body>
+</html>

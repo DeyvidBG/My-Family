@@ -45,12 +45,14 @@ var options = {
 
 var sessionStore = new MySQLStore(options, connection)
 
+app.set('trust proxy', 1)
 var sessionMiddleWare = session({
     key: 'security is important',
     secret: 'security is not a secret',
     store: sessionStore,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { secure: true }
 })
 
 // if (app.get('env') === 'production') {

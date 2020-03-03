@@ -17,7 +17,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/public'))
 
 // Set some cron-jobs
-cron.schedule('49 19 * * *', () => {
+cron.schedule('* 0 * * *', () => {
     db.updateEventStatusTo1()
     db.updateEventStatusTo2()
     db.deleteFinishedEvents()

@@ -3,7 +3,7 @@ var mysql = require('mysql')
 var conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    passowrd: '',
+    password: '',
     dateStrings: true,
     database: 'familyapp',
     timezone: 'Europe/Sofia',

@@ -14,7 +14,7 @@ db.registration = (name, email, bday, phone, pass) => {
         // Hashing the password
         var hash = bcrypt.hashSync(pass, salt)
 
-        conn.query('INSERT INTO users(Name, Email, dateOfJoining, Birthday, PhoneNumber, Password) VALUES(?, ?, DATE(NOW()), ?, ?, ?)',
+        conn.query('INSERT INTO users(Name, Email, dateOfJoining, Family, Birthday, PhoneNumber, Password) VALUES(?, ?, DATE(NOW()), 0, ?, ?, ?)',
         [name, email, bday, phone, hash], (err) => {
             if(err) {
                 resolve(false)

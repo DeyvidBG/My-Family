@@ -17,7 +17,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/public'))
 
 // Set some cron-jobs
-cron.schedule('49 19 * * *', () => {
+cron.schedule('* 0 * * *', () => {
     db.updateEventStatusTo1()
     db.updateEventStatusTo2()
     db.deleteFinishedEvents()
@@ -79,7 +79,7 @@ var gallery = require('./routes/gallery')
 var garage = require('./routes/garage')
 var logout = require('./routes/logout')
 
-const PORT = process.env.PORT || 3000
+const PORT = 8443
 
 // for parsing application/json
 app.use(bodyParser.json())

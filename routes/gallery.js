@@ -42,6 +42,10 @@ var checkFileType = (file, callback) => {
 router.get('/', async (req, res) => {
     var session = req.session
 
+    if(session.familyId === undefined || session.userId === undefined || session.username === undefined) {
+        res.redirect('/auth')
+    }
+
     let albums = await gallery.getAlbums(session.familyId)
 
     res.status(200)

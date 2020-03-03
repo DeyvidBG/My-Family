@@ -7,6 +7,10 @@ router.get('/', async (req, res) => {
     var data = req.body
     var session = req.session
 
+    if(session.familyId === undefined || session.userId === undefined || session.username === undefined) {
+        res.redirect('/auth')
+    }
+
     let user = await db.getUserInfo(session.userId, session.familyId)
     let mainChatInfo = await db.mainInfo(session.userId, session.familyId)
     let getFamilyMembers = await db.getFamilyMembers(session.userId, session.familyId)

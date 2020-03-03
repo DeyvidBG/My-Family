@@ -4,7 +4,12 @@ var express = require('express')
 var router = express.Router()
 
 router.get('/', async (req, res) => {
-    
+    var session = req.session
+
+    if(session.familyId === undefined || session.userId === undefined || session.username === undefined) {
+        res.redirect('/auth')
+    }
+
     res.status(200)
     res.sendFile(path.join(__dirname, '../public/dashboard.html'))
     
@@ -35,11 +40,6 @@ router.get('/events', async (req, res) => {
     } else {
         res.json({error: true})
     }
-})
-
-router.post('/signOut', (req, res) => {
-    req.session.destroy()
-    res.json({status: true})
 })
 
 router.post('/addTask', async (req, res) => {

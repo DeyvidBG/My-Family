@@ -178,21 +178,6 @@ window.onload = () => {
         })
     })
 
-    // Sign out
-    $('#signOut').on('click', () => {
-        $.ajax({
-            url: '/dashboard/signOut',
-            type: 'POST',
-            success: (data) => {
-
-                if(data.status) {
-                    window.location.assign('/')
-                }
-
-            }
-        })
-    })
-
     // Open newTask modal
     $('#newTask').on('click', () => {
         $('.blackShadow').show()

@@ -17,7 +17,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/public'))
 
 // Set some cron-jobs
-cron.schedule('* 0 * * *', () => {
+cron.schedule('49 19 * * *', () => {
     db.updateEventStatusTo1()
     db.updateEventStatusTo2()
     db.deleteFinishedEvents()
@@ -45,20 +45,20 @@ var options = {
 
 var sessionStore = new MySQLStore(options, connection)
 
-app.set('trust proxy', 1)
-var sessionMiddleWare = session({
+var sess = {
     key: 'security is important',
     secret: 'security is not a secret',
     store: sessionStore,
     resave: false,
-    saveUninitialized: false,
-    cookie: { secure: true }
-})
+    saveUninitialized: false
+}
 
-// if (app.get('env') === 'production') {
-//     app.set('trust proxy', 1) // trust first proxy
-//     sess.cookie.secure = true // serve secure cookies
-// }
+var sessionMiddleWare = session(sess)
+
+if (app.get('env') === 'production') {
+    app.set('trust proxy', 1) // trust first proxy
+    sess.cookie.secure = true // serve secure cookies
+}
 
 // Use shared session middleware for socket.io
 io.use((socket, next) => {

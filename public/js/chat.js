@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
     scrollToBottom()
 
     // socket's configuration and setting up some events
-    var socket = io('http://localhost:3000/chat')
+    var socket = io('http://localhost:8443/chat')
 
     // set the client to listen to given room
     socket.emit('joinRoom')

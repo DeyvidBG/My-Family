@@ -74,8 +74,10 @@ var createFamily = require('./routes/createFamily')
 var chat = require('./routes/chat')
 var map = require('./routes/map')
 var gallery = require('./routes/gallery')
+var garage = require('./routes/garage')
+var logout = require('./routes/logout')
 
-const PORT = 8080
+const PORT = process.env.PORT || 3000
 
 // for parsing application/json
 app.use(bodyParser.json())
@@ -113,7 +115,18 @@ app.use('/map', map)
 // handle all requests sent to '/gallery'
 app.use('/gallery', gallery)
 
+// handle all requests sent to '/garage'
+app.use('/garage', garage)
+
+//handle all requests sent to '/logout'
+app.use('/logout', logout)
+
 // serving static files such as .css, .js, .jpg, .png
 app.use(express.static(path.join(__dirname, 'public')))
+
+// handle 404
+app.get('*', function(req, res){
+    res.status(404).render('404')
+})
 
 server.listen(PORT)

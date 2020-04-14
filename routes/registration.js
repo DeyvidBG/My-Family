@@ -8,10 +8,6 @@ var router = express.Router()
 router.get('/', (req, res) => {
     var session = req.session
 
-    if(session.familyId === undefined || session.userId === undefined || session.username === undefined) {
-        res.redirect('/auth')
-    }
-
     res.sendFile(path.join(__dirname, '../public/registration.html'))
     console.log(req.session.allowed)
 })

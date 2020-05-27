@@ -41,16 +41,6 @@ CREATE TABLE `calendar` (
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data for table `calendar`
---
-
-INSERT INTO `calendar` (`id`, `familyId`, `addedBy`, `title`, `description`, `startdate`, `kind`, `status`) VALUES
-(3, 9, 1, 'My Family!', 'sometimes is okay sometime is bad sometimes is okay sometime is bad sometimes is okay sometime is bad ', '2020-02-16 00:00:00', 2, 1),
-(17, 9, 3, 'My Family!', 'tests are very important', '2020-02-10 00:00:00', 3, 1),
-(28, 9, 3, 'My Family!', 'For the count', '2020-02-14 00:00:00', 4, 4),
-(30, 9, 1, 'Хах', 'Създаване на работеща апликация, за втори кръг на олимпиадата по ИТ 2019-2020.', '2020-02-10 00:00:00', 2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -61,16 +51,6 @@ CREATE TABLE `calendarstatus` (
   `id` int(1) NOT NULL,
   `statusType` varchar(20) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `calendarstatus`
---
-
-INSERT INTO `calendarstatus` (`id`, `statusType`) VALUES
-(1, 'in progress'),
-(2, 'off schedule'),
-(3, 'completed'),
-(4, 'planned');
 
 -- --------------------------------------------------------
 
@@ -99,13 +79,6 @@ CREATE TABLE `families` (
   `members` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data for table `families`
---
-
-INSERT INTO `families` (`id`, `familyName`, `members`) VALUES
-(9, 'Herta', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -120,13 +93,6 @@ CREATE TABLE `gallery_albums` (
   `description` varchar(255) COLLATE utf8_bin NOT NULL,
   `createdOn` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `gallery_albums`
---
-
-INSERT INTO `gallery_albums` (`album_id`, `familyId`, `createdBy`, `title`, `description`, `createdOn`) VALUES
-(3, 9, 1, 'Моята почивка', 'Моята почивка в Италия!', '2020-02-16 19:33:46');
 
 -- --------------------------------------------------------
 
@@ -155,18 +121,6 @@ CREATE TABLE `invitations` (
   `validFor` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data for table `invitations`
---
-
-INSERT INTO `invitations` (`id`, `familyId`, `invitationCode`, `validFor`) VALUES
-(250, 9, 912465, '2020-02-08'),
-(251, 9, 907913, '2020-02-08'),
-(252, 9, 934591, '2020-02-08'),
-(253, 9, 287419, '2020-02-08'),
-(254, 9, 115756, '2020-02-08'),
-(255, 9, 805877, '2020-02-08');
-
 -- --------------------------------------------------------
 
 --
@@ -180,15 +134,6 @@ CREATE TABLE `message` (
   `text` varchar(1000) COLLATE utf8_bin NOT NULL,
   `senddate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`id`, `familyId`, `userId`, `text`, `senddate`) VALUES
-(51, 9, 1, '', '2020-02-16 09:17:17'),
-(52, 9, 1, 'hey it\'s working', '2020-02-16 09:18:09'),
-(53, 9, 1, 'test', '2020-02-29 05:30:15');
 
 -- --------------------------------------------------------
 
@@ -205,16 +150,6 @@ CREATE TABLE `objects` (
   `lng` float(10,6) NOT NULL,
   `color` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `objects`
---
-
-INSERT INTO `objects` (`id`, `familyId`, `title`, `description`, `lat`, `lng`, `color`) VALUES
-(1, 9, 'Home', 'My Home', 43.224148, 27.914013, 1),
-(5, 9, 'School', 'My School', 43.217209, 27.939270, 2),
-(6, 9, 'Fitness', 'My Fitness', 43.219585, 27.914286, 4),
-(9, 9, 'English Class', 'My English class', 43.206898, 27.917702, 2);
 
 -- --------------------------------------------------------
 
@@ -267,14 +202,6 @@ CREATE TABLE `users` (
   `PhoneNumber` bigint(20) NOT NULL,
   `Password` varchar(250) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`UserId`, `Name`, `Email`, `dateOfJoining`, `Family`, `Birthday`, `PhoneNumber`, `Password`) VALUES
-(1, 'Deyvid Popov', 'deyvidpopov18@gmail.com', '2020-02-05', 9, '2002-07-22', 359884407575, '$2a$10$D7VSjzKPlRT9XYazhVunzu3z7guNz25YAXg3RIqSCh6eqzkb8MIQe'),
-(4, 'Galya Popova', 'agalia_popova@abv.bg', '2020-02-15', 9, '1971-02-19', 889402060, '$2a$10$MiUg0rNeUVcx.fmWclecbuiOuyTgDZEwnGYAr4flPVx.ru7P8R/Ai');
 
 --
 -- Indexes for dumped tables
